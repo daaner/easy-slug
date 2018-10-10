@@ -1,0 +1,23 @@
+{
+    "name": "daaner/easy-slug",
+    "description": "Easy creation of slugs for Laravel 5+",
+    "keywords": ["laravel", "sluggable", "slug", "laravel slug"],
+    "license": "MIT",
+
+    "version": "1.0",
+    "require": {
+        "php": ">=5.4",
+        "ext-iconv": "*"
+    },
+    "authors": [
+        {
+            "name": "Andrey Ivasko 'Daan'",
+            "email": "daan@ukr.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "EasySlug\\": "src/"
+        }
+    }
+}
