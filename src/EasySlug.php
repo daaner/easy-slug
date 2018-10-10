@@ -4,7 +4,7 @@ namespace EasySlug;
 
 use Illuminate\Support\Str;
 
-class EasySlug {
+trait EasySlug {
 
   public function EasySlugCheck($value, $slug_field, $source = null) {
 

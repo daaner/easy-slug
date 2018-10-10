@@ -12,8 +12,25 @@
 
 `composer require daaner/easy-slug`
 
-В нужном месте подключаем класс `use EasySlug\EasySlug;`
+[ru]
+- В шапке модели `use EasySlug\EasySlug;`
+- В теле модели подключаем трейт `use EasySlug;`
 
+[en]
+- In header model `use EasySlug\EasySlug;`
+- In the body of the model use trait `use EasySlug;`
+
+
+```
+...
+use EasySlug\EasySlug;
+
+class BaseModel extends Model
+{
+
+  use EasySlug;
+...  
+```
 
 ## Использование
 
