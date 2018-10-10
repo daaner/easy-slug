@@ -18,7 +18,7 @@ trait EasySlug {
       } elseif ($this->name) {
         $value = Str::slug($this->name);
       } else {
-        $value = 'slug_'. date("Y-m-d-H-i-s");
+        $value = 'slug_'. date("Y-m-d_H-i-s");
       }
     } else {
       $value = Str::slug($value);
