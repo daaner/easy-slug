@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class EasySlug {
 
-  public function VerifySlugs($value, $slug_field, $source = null) {
+  public function EasySlugCheck($value, $slug_field, $source = null) {
 
     $primaryKey = static::getKeyName();
 
