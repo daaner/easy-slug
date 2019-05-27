@@ -4,7 +4,7 @@
     "keywords": ["laravel", "sluggable", "slug", "laravel slug"],
     "license": "MIT",
 
-    "version": "1.0.2",
+    "version": "1.0.3",
     "require": {
         "php": ">=5.4",
         "ext-iconv": "*"

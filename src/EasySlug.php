@@ -33,18 +33,18 @@ trait EasySlug {
     //check for unique
     if($this->getKey()) {
       //existing
-      if (static::where($slug_field, $value)->where($primaryKey, '!=', $this->getKey())->count()) {
+      if (static::where($slug_field, $value)->where($primaryKey, '!=', $this->getKey())->withTrashed()->count()) {
         $x = 1;
-        while (static::where($slug_field, $value . '-' . $x)->where($primaryKey, '!=', $this->getKey())->count()) {
+        while (static::where($slug_field, $value . '-' . $x)->where($primaryKey, '!=', $this->getKey())->withTrashed()->count()) {
           $x++;
         }
         $value .= '-'. $x;
       }
     } else {
       //new
-      if (static::where($slug_field, $value)->count()) {
+      if (static::where($slug_field, $value)->withTrashed()->count()) {
         $x = 1;
-        while (static::where($slug_field, $value . '-' . $x)->count()) {
+        while (static::where($slug_field, $value . '-' . $x)->withTrashed()->count()) {
           $x++;
         }
         $value .= '-'. $x;
