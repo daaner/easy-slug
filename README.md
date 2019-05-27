@@ -39,6 +39,7 @@ class BaseModel extends Model
 - Первый параметр `$value` - наше значение
 - Второй параметр `slug` - поле, в котором хранится наш слаг
 - Третий параметр `custom_field` - поле из которого будет формироваться слаг
+- Обрезает длину слага до 100 символов
 
 ЗЫ: Если Вы хотите формировать слаг из полей `title` или `name` - третий параметр можно не указывать (если находит `title` формирует сперва из него, если нет - ищет `name`). Если третий параметр не указан или не найден - формируется слаг `'slug_'. date("Y-m-d-H-i-s")`, проверяется на уникальность и, если есть совпадения, дописывает первое уникальное число через дефис.
 
@@ -48,6 +49,7 @@ class BaseModel extends Model
 - The first parameter `$value` is our value
 - The second parameter `slug` is the field in which our slug is stored
 - The third parameter `custom_field` is the field from which the slug will be formed
+- Cuts the length of the slag to 100 characters
 
 PS: If you want to form a slug from the `title` or` name` fields - the third parameter can be null (if it finds `title` forms first of it, if not, it searches for` name`). If the third parameter is not specified or not found, the slug formed `'slug_'. date("Y-m-d-H-i-s")`, is checked for uniqueness and, if there are matches, appends the first unique number with a hyphen.
 

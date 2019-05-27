@@ -11,8 +11,12 @@ trait EasySlug {
     $primaryKey = static::getKeyName();
 
     if (empty($value)) {
-      if ($this->{$source}) {
-        $value = Str::slug($this->{$source});
+      if (isset($source)) {
+        if(isset($this->{$source}) && $this->{$source}) {
+          $value = Str::slug($this->{$source});
+        } else {
+          $value = 'slug_'. date("Y-m-d_H-i-s");
+        }
       } elseif ($this->title) {
         $value = Str::slug($this->title);
       } elseif ($this->name) {
@@ -23,6 +27,8 @@ trait EasySlug {
     } else {
       $value = Str::slug($value);
     }
+
+    $value = mb_strimwidth($value, 0, 100);
 
     //check for unique
     if($this->getKey()) {
