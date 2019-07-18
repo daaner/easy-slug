@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/daaner/easy-slug/downloads)](https://packagist.org/packages/daaner/easy-slug)
 
 ## Fix
-- many fix
+- fix softDeleted tray
 
 ## About
 [ru] Простое создание уникального слага для Ларавел 5+
