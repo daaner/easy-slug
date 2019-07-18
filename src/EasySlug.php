@@ -33,18 +33,39 @@ trait EasySlug {
     //check for unique
     if($this->getKey()) {
       //existing
-      if (static::where($slug_field, $value)->where($primaryKey, '!=', $this->getKey())->withTrashed()->count()) {
+      try {
+        $existing = static::where($slug_field, $value)->where($primaryKey, '!=', $this->getKey())->withTrashed()->count();
+      } catch (\Exception $e) {
+        $existing = static::where($slug_field, $value)->where($primaryKey, '!=', $this->getKey())->count();
+      }
+
+      if ($existing) {
         $x = 1;
-        while (static::where($slug_field, $value . '-' . $x)->where($primaryKey, '!=', $this->getKey())->withTrashed()->count()) {
+        try {
+          $existing_while = static::where($slug_field, $value . '-' . $x)->where($primaryKey, '!=', $this->getKey())->withTrashed()->count();
+        } catch (\Exception $e) {
+          $existing_while = static::where($slug_field, $value . '-' . $x)->where($primaryKey, '!=', $this->getKey())->count();
+        }
+        while ($existing_while) {
           $x++;
         }
         $value .= '-'. $x;
       }
     } else {
       //new
-      if (static::where($slug_field, $value)->withTrashed()->count()) {
+      try {
+        $new = static::where($slug_field, $value)->withTrashed()->count();
+      } catch (\Exception $e) {
+        $new = static::where($slug_field, $value)->count();
+      }
+      if ($new) {
         $x = 1;
-        while (static::where($slug_field, $value . '-' . $x)->withTrashed()->count()) {
+        try {
+          $new_while = static::where($slug_field, $value . '-' . $x)->withTrashed()->count();
+        } catch (\Exception $e) {
+          $new_while = static::where($slug_field, $value . '-' . $x)->count();
+        }
+        while ($new_while) {
           $x++;
         }
         $value .= '-'. $x;
